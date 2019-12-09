@@ -2,7 +2,7 @@
  * @Author: liujia
  * @Date: 2019-11-28 16:44:54
  * @Last Modified by: liujia
- * @Last Modified time: 2019-12-09 20:08:30
+ * @Last Modified time: 2019-12-09 20:23:26
  * @description: 项目路由配置
  */
 import React from 'react';
@@ -63,4 +63,5 @@ const TabNavigator = createBottomTabNavigator(
   //   tabBarComponent: () => null,
   // },
 );
+
 export default createAppContainer(TabNavigator);
