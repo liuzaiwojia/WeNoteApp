@@ -2,14 +2,16 @@
  * @Author: liujia
  * @Date: 2019-11-28 16:44:54
  * @Last Modified by: liujia
- * @Last Modified time: 2019-12-09 20:23:26
+ * @Last Modified time: 2019-12-10 09:10:40
  * @description: 项目路由配置
  */
 import React from 'react';
 import {Text, View} from 'react-native';
-import {createAppContainer} from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import PostScreen from './Post';
+import Post from './Post';
+import AuthLoadingScreen from '../pages/auth/AuthLoadingScreen';
+import Auth from './Auth';
 
 class BookScreen extends React.Component {
   render() {
@@ -51,9 +53,9 @@ class ContactScreen extends React.Component {
   }
 }
 
-const TabNavigator = createBottomTabNavigator(
+const bottomTabNavigator = createBottomTabNavigator(
   {
-    PostScreen: PostScreen,
+    PostScreen: Post,
     BookScreen: BookScreen,
     TopicScreen: TopicScreen,
     MessageScreen: MessageScreen,
@@ -64,4 +66,10 @@ const TabNavigator = createBottomTabNavigator(
   // },
 );
 
-export default createAppContainer(TabNavigator);
+const switchNavigator = createSwitchNavigator({
+  AuthLoading: AuthLoadingScreen,
+  App: bottomTabNavigator,
+  Auth: Auth,
+});
+
+export default createAppContainer(switchNavigator);
